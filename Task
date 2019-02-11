@@ -1,0 +1,15 @@
+K-means Algorithm
+The K-means algorithm is an iterative 2-step expectation-maximisation algorithm. The following two steps are run repeatedly until no additional changes occur; this algorithm ensures that the square of the error metric will always decrease on every step (until convergence is achieved). The initial coordinates of the cluster centres should be taken from Table 1. Expectation Step
+In the expectation step each input data point is assigned to the closest cluster centroid measured using the Euclidian distance metric (i.e.  dist = SQRT([x-Cx]2 + [y-Cy]2 ) ). The total error metric should also be accumulated as the sum of the distances of each point to its assigned cluster centroid.
+ 
+Maximisation Step
+In the maximisation step the total error metric is minimised by adjusting the cluster centroids to the centre of the data points assigned to it. The new centroid of the cluster should be found by computing the mean of the point coordinates in each dimension (i.e.  x and y coordinates are treated independently).
+ 
+Convergence
+Convergence of the solution is achieved when the expectation step does not change the assignment of any data points; this can also be detected by checking if the total error metric does not change from the previous iteration.
+ 
+ 
+ 
+ 
+ The output file should be a plain text file that contains the following output, the first line will have “error = ” followed by the error metric printed to 3 decimal places (i.e. the printf format would be “error = %.3f”). Each of the following lines will be the cluster name for the input points in the same order as it appeared in the input data file.
+The program should be run and its output dumped into a text file called “OUTPUT.TXT”. You should then put into a standard archive (.tar.gz/bz2, .zip, .rar etc) the source code for your program, a build script and your “OUTPUT.TXT” file. If you have any additional comments you wish to add to your submission please put them in a file called “COMMENTS.TXT”. Please then email the archive by replying to the last email you have from us and paste the first 10 lines of the output into the email body.
