@@ -1,22 +1,22 @@
-# Author: Nunzio
+# Author: Nunzio Gatti / England
 # Date: 07th of June, 2018
 import sys
 import os
 import numpy as np
- 
+
 
 def update_centroids(labelled_data, centroids, id_to_name_mapping):
-    """ 
-    Updates the centroids after re-allocation of 
-    the data to the new clusters 
+    """
+    Updates the centroids after re-allocation of
+    the data to the new clusters
     """
     for idx, cluster_name in id_to_name_mapping.items():
         single_cluster_datapoints = labelled_data[labelled_data[:, 2] == idx]
         new_centroid = single_cluster_datapoints[:, :2].mean(axis=0)
         centroids[cluster_name] = new_centroid
     return centroids
- 
- 
+
+
 def get_distance_to_cluster(data, centre):
     return (((data - np.array(centre)) ** 2).sum(axis=1)) ** 0.5
 
@@ -28,8 +28,8 @@ def update_distances(data, distance_matrix, centroids):
     for idx, centre in enumerate(centroids.values()):
         distance_matrix[:, idx] = get_distance_to_cluster(data, centre)
     return distance_matrix
- 
- 
+
+
 def fit(data, distance_matrix, centroids):
     """
     k-means implementation
@@ -41,10 +41,10 @@ def fit(data, distance_matrix, centroids):
     temporary_vector = distance_matrix.argmin(axis=1)  # get its index
     labelled_data = np.concatenate((data, temporary_vector.reshape(data.shape[0], 1)), axis=1)
     return labelled_data, error
- 
+
 
 def cluster(data):
-    """ 
+    """
     Clusters the data points.
     Returns error and the cluster names
     """
@@ -57,7 +57,7 @@ def cluster(data):
         "David": [-1.044, -1.251],
         "Edward": [-1.495, -0.090]
     }
-   
+
     # mapping of the Cluster IDs to the Cluster Names
     id_to_name_mapping = dict(zip(range(0, len(centroids)), centroids.keys()))
 
