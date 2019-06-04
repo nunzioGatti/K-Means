@@ -1,5 +1,4 @@
-# Author: Nunzio Gatti / England aaaa
-
+# Author: Nunzio 
 # Date: 07th of June, 2018
 import sys
 import os
